@@ -6,59 +6,6 @@ namespace xmlSerializer
 {
 	class MainClass
 	{
-		public sealed class yweatherLoc
-		{
-			public string city { get; set;}
-
-			public string st { get; set;}
-
-			public yweatherLoc()
-			{
-			}
-		}
-
-		public sealed class yweatherWind
-		{
-			//chill direction speed
-			public string chill { get; set;}
-
-			public string direction { get; set;}
-
-			public string speed { get; set;}
-
-			public yweatherWind()
-			{
-			}
-		}
-
-		public sealed class yweatherAtmo
-		{
-			//humidity visibility pressure
-			public string humidity { get; set;}
-
-			public string visibility { get; set;}
-
-			public string pressure { get; set;}
-
-			public yweatherAtmo()
-			{
-			}
-		}
-
-		public sealed class yweatherCond
-		{
-			//text temp date
-			public string text { get; set;}
-
-			public string temp { get; set;}
-
-			public string date { get; set;}
-
-			public yweatherCond()
-			{
-			}
-
-		}
 
 		public static void Main (string[] args)
 		{
