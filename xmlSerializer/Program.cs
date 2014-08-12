@@ -20,6 +20,9 @@ namespace xmlSerializer
 			yatomsphere (out humidity, out pressure, out visibility);
 			yCondition (out temp, out text, out date);
 			yastronomy (out sunrise, out sunset);
+			yforcast (string[] forcast);
+
+
 			Console.WriteLine ("Temp: " + temp);
 			Console.WriteLine ("Condition: " + text);
 			Console.WriteLine ("Humidity: " + humidity);
@@ -128,6 +131,42 @@ namespace xmlSerializer
 
 			}
 
+		}
+		static string[.] yforcast()
+		{
+			// Create a new XmlDocument  
+			XmlDocument doc = new XmlDocument();  
+
+			// Load data  
+			doc.Load("http://xml.weather.yahoo.com/forecastrss?p=39503");  
+
+			// Set up namespace manager for XPath  
+			XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);  
+			ns.AddNamespace("yweather", "http://xml.weather.yahoo.com/ns/rss/1.0");  
+
+			// Get forecast with XPath  
+			XmlNodeList nodes = doc.SelectNodes("/rss/channel/yweather:forcast", ns);  
+
+			// You can also get elements based on their tag name and namespace,  
+			// though this isn't recommended  
+			//XmlNodeList nodes = doc.GetElementsByTagName("forecast",   
+			//                          "http://xml.weather.yahoo.com/ns/rss/1.0");  
+
+			string[,] forcast = new string[5,5]
+			forcast = "Null";
+
+			foreach (XmlNode node in nodes)
+			{
+				for (int i = 0; i < forcast.getlength(0); i++)
+					{
+					forcast[i, 0] = node.Attributes["day"].InnerText;
+					forcast[i, 1] = node.Attributes["date"].InnerText;
+					forcast[i, 2] = node.Attributes["low"].InnerText;
+					forcast[i, 3] = node.Attributes["high"].InnerText;
+					forcast[i, 4] = node.Attributes["text"].InnerText;
+
+			}
+				return forcast;
 		}
 }
 }
