@@ -1,3 +1,26 @@
+//
+//  Program.cs
+//
+//  Author:
+//       Clayton Cowart <ccowart@gmail.com>
+//
+//  Copyright (c) 2014 Clayton Cowart
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
 using System;
 using xmlSerializer;
 using System.Xml;
@@ -20,7 +43,7 @@ namespace xmlSerializer
 			yatomsphere (out humidity, out pressure, out visibility);
 			yCondition (out temp, out text, out date);
 			yastronomy (out sunrise, out sunset);
-			yforcast (string[] forcast);
+			yforcast ();
 
 
 			Console.WriteLine ("Temp: " + temp);
@@ -132,7 +155,7 @@ namespace xmlSerializer
 			}
 
 		}
-		static string[.] yforcast()
+		static void yforcast()
 		{
 			// Create a new XmlDocument  
 			XmlDocument doc = new XmlDocument();  
@@ -152,21 +175,19 @@ namespace xmlSerializer
 			//XmlNodeList nodes = doc.GetElementsByTagName("forecast",   
 			//                          "http://xml.weather.yahoo.com/ns/rss/1.0");  
 
-			string[,] forcast = new string[5,5]
-			forcast = "Null";
+			//string[,] forcast = new string[5,5]
+			//forcast = "Null";
 
 			foreach (XmlNode node in nodes)
 			{
-				for (int i = 0; i < forcast.getlength(0); i++)
-					{
-					forcast[i, 0] = node.Attributes["day"].InnerText;
-					forcast[i, 1] = node.Attributes["date"].InnerText;
-					forcast[i, 2] = node.Attributes["low"].InnerText;
-					forcast[i, 3] = node.Attributes["high"].InnerText;
-					forcast[i, 4] = node.Attributes["text"].InnerText;
-
+				Console.WriteLine("{0}: {1}, {2}F - {3}F",  
+				                  node.Attributes["day"].InnerText,  
+				                  node.Attributes["text"].InnerText,  
+				                  node.Attributes["low"].InnerText,  
+				                  node.Attributes["high"].InnerText);  
 			}
-				return forcast;
+				//return forcast;
 		}
 }
+	
 }
